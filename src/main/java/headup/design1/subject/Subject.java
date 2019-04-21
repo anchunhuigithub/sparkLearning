@@ -4,6 +4,7 @@ import headup.design1.observer.Observer;
 
 /**
  * Created by AN on 2019/1/13.
+ * 自定义主题
  */
 public interface Subject {
     public void registerObserver(Observer observer);

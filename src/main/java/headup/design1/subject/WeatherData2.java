@@ -15,7 +15,7 @@ public class WeatherData2 extends Observable {
     }
 
     public void measurementsChanged(){
-        // 表示
+        // 没有传递通知数据对象，说明使用pull的方式进行获取数据
         setChanged();
         notifyObservers();
     }

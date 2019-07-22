@@ -43,8 +43,6 @@ object AllAddress {
       val from  =  x.split("\\|")(2)
       val to = x.split("\\|")(6)
       val result = from + '\n' + to
-      result
-
     }.saveAsTextFile("/home/an/result/address_count")
 //    val sparkSql=new SQLContext(sparkContext)
 //    import sparkSql.implicits._

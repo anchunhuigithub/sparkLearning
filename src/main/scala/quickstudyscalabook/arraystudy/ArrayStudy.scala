@@ -1,4 +1,4 @@
-package quickstudyscala.arraystudy
+package quickstudyscalabook.arraystudy
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -14,7 +14,7 @@ object ArrayStudy {
     // 定长数组
     val array1 = new Array[Int](10)
 
-    // 边长数组
+    // 变长数组
     val array2 = new ArrayBuffer[Int]()
 
     // array 直接指定数组元素
@@ -26,8 +26,8 @@ object ArrayStudy {
 //    traversalArray(array)
 //    traversalUdStep(array)
 //    traversalDir(array)
-    arrayTrans(array)
-
+//    arrayTrans(array)
+    opArray(Array(3,2,1,5))
   }
 
 
@@ -67,11 +67,13 @@ object ArrayStudy {
 
   }
 
+
+
   // 数组操作
   def opArray(a: Array[Any]): Unit = {
 
     println(a.mkString(","))
-    // 定长数组转为边长数组
+    // 定长数组转为变长数组
     val b = a.toBuffer
     // 添加元素
     b += 3
@@ -89,7 +91,30 @@ object ArrayStudy {
     b.trimEnd(5)
     println(b.mkString(","))
 
-    //
+
+    // 对数组可以直接进行排序，但是对数组缓冲不可以
+    scala.util.Sorting.quickSort(a)
+
+    println("排序后的结果为 \t"+a.mkString(","))
+
+    // scala和java的互相操作
+
+    import scala.collection.JavaConversions.bufferAsJavaList
+    import scala.collection.mutable.ArrayBuffer
+
+    val command = ArrayBuffer("ls","-al","/home/anchunhui")
+    // 此处需要传递一个实现了java.util.List 接口的实例，但是由于引用了隐士转换，自动把ArrayBuffer 转为了List
+    val pb=new ProcessBuilder(command)
+
+
+    println(pb)
+    // java list 转为 Buffer
+    import scala.collection.JavaConversions.asScalaBuffer
+
+    import collection.mutable.Buffer
+    val cmd:Buffer[String] =pb.command()
+
+    println(cmd.mkString(","))
 
   }
 
